@@ -1,9 +1,18 @@
-# Install Forth on ATMega32U4 SparkFun's Pro Micro
+# How to Install Forth on ATMega32U4 SparkFun's Pro Micro
 How to install Forth on AVR's ATMega32U4 board (SparkFun's [Pro Micro](https://learn.sparkfun.com/tutorials/pro-micro--fio-v3-hookup-guide/all#hardware-overview-pro-micro) Arduino board)
 
 __warning! work in progress! not verified yet! it is NOT working! (yet)__
 
 ## On Windows
+
+### Install Precompiled Hex File
+- Download [FlashForth](https://flashforth.com/index.html) [here](http://www.sourceforge.net/projects/flashforth)
+- Unzip the ZIP archive `ff5.0.zip` into the project directory, e.g. `c:\avr\`
+- Locate `32u4-16MHz-USB.hex` in the project directory (e.g.  `c:\avr\flashforth\avr\hex\32u4-16MHz-USB.hex`)
+- Upload the hex file using the USBasp or similar programmer
+- `avrdude -u -c usbasp-clone -p m32u4 -e -U flash:w:"c:\avr\flashforth\avr\hex\32u4-16MHz-USB.hex":a -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xE9:m`
+
+### Compile Your Own Hex File in Order to Change the VID and PID
 - Download [FlashForth](https://flashforth.com/index.html) [here](http://www.sourceforge.net/projects/flashforth)
 - Unzip the ZIP archive `ff5.0.zip` into the project directory, e.g. `c:\avr\`
 - Download and install Microchip Studio (ex Atmel Studio)
