@@ -7,7 +7,7 @@ __warning! work in progress! not verified yet! it is NOT working! (yet)__
 
 ### How to Restore Pro Micro's Bootloader
 
-Once you put Forth on Pro Micro you will lose the Arduino bootloader and will not be able to upload any Arduino sketch. In order to bring it back connect the board to the USBASP programmer (I have a clone from China) and upload the original bootloader. I did it using [avrdudess](https://blog.zakkemble.net/avrdudess-a-gui-for-avrdude/) which is a GUI for `avrdude` (`avrdude` comes packaged within).
+Once you put Forth on Pro Micro you will lose the [Arduino bootloader](https://github.com/jknofe/caterina) and will not be able to upload any Arduino sketch. In order to bring it back connect the board to the USBASP programmer (I have a clone from China) and upload the original bootloader. I did it using [avrdudess](https://blog.zakkemble.net/avrdudess-a-gui-for-avrdude/) which is a GUI for `avrdude` (`avrdude` comes packaged within).
 
 ```shell
 pushd C:\app\electro\AVRDUDESS
