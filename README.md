@@ -5,6 +5,16 @@ __warning! work in progress! not verified yet! it is NOT working! (yet)__
 
 ## On Windows
 
+### How to Restore Pro Micro's Bootloader
+
+Once you put Forth on Pro Micro you will lose the Arduino bootloader and will not be able to upload any Arduino sketch. In order to bring it back connect the board to the USBASP programmer (I have a clone from China) and upload the original bootloader. I did it using [avrdudess](https://blog.zakkemble.net/avrdudess-a-gui-for-avrdude/) which is a GUI for `avrdude` (`avrdude` comes packaged within).
+
+```shell
+pushd C:\app\electro\AVRDUDESS
+avrdude -v -patmega32u4 -cusbasp-clone -Pusb -e -Ulock:w:0x3F:m -Uefuse:w:0xCB:m -Uhfuse:w:0xD8:m -Ulfuse:w:0xFF:m 
+avrdude -v -patmega32u4 -cusbasp-clone -Pusb -Uflash:w:C:\Users\Filip\AppData\Local\Arduino15\packages\SparkFun\hardware\avr\1.1.13/bootloaders/caterina/Caterina-promicro16.hex:i -Ulock:w:0x2F:m
+```
+
 ### Install Precompiled Hex File
 - Download [FlashForth](https://flashforth.com/index.html) [here](http://www.sourceforge.net/projects/flashforth)
 - Unzip the ZIP archive `ff5.0.zip` into the project directory, e.g. `c:\avr\`
