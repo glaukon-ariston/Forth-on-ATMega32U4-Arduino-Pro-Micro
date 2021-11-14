@@ -17,7 +17,7 @@ avrdude -u -c usbasp-clone -p m32u4 -U flash:w:"ArduinoLeonardoBootloader.hex":i
 - Unzip the ZIP archive `ff5.0.zip` into the project directory, e.g. `c:\avr\`
 - Locate `32u4-16MHz-USB.hex` in the project directory (e.g.  `c:\avr\flashforth\avr\hex\32u4-16MHz-USB.hex`)
 - Upload the hex file using the USBasp or similar programmer
-- `avrdude -u -c usbasp-clone -p m32u4 -e -U flash:w:"c:\avr\flashforth\avr\hex\32u4-16MHz-USB.hex":a -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xE9:m`
+- `avrdude -u -c usbasp-clone -p m32u4 -U flash:w:"c:\avr\flashforth\avr\hex\32u4-16MHz-USB.hex":a -U lfuse:w:0xFF:m -U hfuse:w:0xDF:m -U efuse:w:0xFF:m`
 - __The result is that the USB device is either not recognised at all or it is recognised with errors__
 
 The following is the [USB Device Tree Viewer](https://www.uwe-sieber.de/usbtreeview_e.html) output when the device is recognised albeit with errors.
