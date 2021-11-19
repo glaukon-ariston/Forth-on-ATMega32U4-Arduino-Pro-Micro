@@ -18,7 +18,7 @@ avrdude -u -c usbasp-clone -p m32u4 -U flash:w:"ArduinoLeonardoBootloader.hex":i
 - Locate `32u4-16MHz-USB.hex` in the project directory (e.g.  `c:\avr\flashforth\avr\hex\32u4-16MHz-USB.hex`)
 - Upload the hex file using the USBasp or similar programmer
 - `avrdude -u -c usbasp-clone -p m32u4 -U flash:w:"c:\avr\flashforth\avr\hex\32u4-16MHz-USB.hex":a -U lfuse:w:0xFF:m -U hfuse:w:0xDF:m -U efuse:w:0xFF:m`
-- Plug the ATMega32U4 board into the PC and you should be able to connect to it using a terminal application (e.g. [TeraTerm](https://ttssh2.osdn.jp/index.html.en) works well)
+- Plug the ATMega32U4 board into the PC and you should be able to connect to it using a terminal application (e.g. [TeraTerm](https://ttssh2.osdn.jp/index.html.en) works well, also [PuTTY](https://www.putty.org/) and [RealTerm](https://sourceforge.net/projects/realterm/))
 - Press ENTER and you should be greeted with an `ok` prompt. Type `words<ENTER>` and it should print out its dictionary of known words.
 
 ```log
