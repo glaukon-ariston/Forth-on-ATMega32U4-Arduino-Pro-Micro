@@ -22,10 +22,10 @@ avrdude -u -c usbasp-clone -p m32u4 -U flash:w:"ArduinoLeonardoBootloader.hex":i
 - Press ENTER and you should be greeted with an `ok` prompt. Type `words<ENTER>` and it should print out its dictionary of known words.
 
 ```log
-  ok
+  ok<#,ram>
 words
 p2+ pc@ @p hi d. ud. d> d< d= d0< d0= dinvert d2* d2/ d- d+ dabs ?dnegate dnegate s>d rdrop endit next for in, inline repeat while again until begin then else if zfl pfl xa> >xa x>r dump .s words >pr .id ms ticks r0 s0 latest state bl 2- ['] -@ ; :noname : ] [ does> postpone create cr [char] ihere ( char ' lit abort" ?abort ?abort? abort prompt quit true false .st inlined immediate shb interpret 'source >in tiu tib ti# number? >number ud/mod ud* sign? digit? find immed? (f) c>n n>c @+ c@+ place cmove word parse \ /string source user base pad hp task ulink rsave bin hex decimal . u.r u. sign #> #s # digit <# hold up min max ?negate tuck nip / u*/mod u/ * u/mod um/mod um* 'key? 'key 'emit p++ p+ pc! p! p@ r>p !p>r !p u> u< > < = 0< 0= <> within +! 2/ 2* >body 2+ 1- 1+ negate invert xor or and - m+ + abs dup r@ r> >r rot over swap drop allot ." ," s" (s" type accept 1 umax umin spaces space 2swap 2dup 2drop 2! 2@ cf, chars char+ cells cell+ aligned align cell c, , here dp ram eeprom flash >< rp@ sp! sp@ 2constant constant 2variable variable @ex execute key? key emit Fcy mtst scan skip n= rshift lshift mclr mset ic, i, operator iflush cwd wd- wd+ pause turnkey to is defer value fl+ fl- c! c@ @ a> ! >a literal int! ;i di ei ver warm txu rxu rxu? usb- usb+ empty rx0? rx0 tx0 load- load+ busy idle exit
-marker  ok
+marker  ok<#,ram>
 ```
 
 ### [NOT WORKING] Change the VID and PID and Compile Your Own Hex File
