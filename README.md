@@ -63,7 +63,7 @@ Loading completed
 ```
 - Upload the `hex` file to the ATMega32U4 board.
 ```shell
-avrdude -u -c usbasp-clone -p m32u4 -U flash:w:"D:\RE\Electronics\Arduino\Forth\flashforth\avr\src\dist\default\production\src.production.hex":a -U lfuse:w:0xFF:m -U hfuse:w:0xDF:m -U efuse:w:0xCF:m
+avrdude -u -c usbasp-clone -p m32u4 -U flash:w:"D:\RE\Electronics\Arduino\Forth\flashforth\avr\src\dist\default\production\src.production.hex":a -U lfuse:w:0xFF:m -U hfuse:w:0xDF:m -U efuse:w:0xFF:m
 ```
 
 ### [NOT WORKING] Change the VID and PID and Compile Your Own Hex File
