@@ -28,6 +28,44 @@ p2+ pc@ @p hi d. ud. d> d< d= d0< d0= dinvert d2* d2/ d- d+ dabs ?dnegate dnegat
 marker  ok<#,ram>
 ```
 
+### Compile Your Own Hex File
+- Download [FlashForth](https://flashforth.com/index.html) from [here](http://www.sourceforge.net/projects/flashforth).
+- Unzip the ZIP archive `ff5.0.zip` into the project directory.
+- Follow the instructions as described [here](https://flashforth.com/atmega.html).
+- Install [MPLABX](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide) and [XC8](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers).
+- Create a new project for ATMega32U4 in MPLABX and add `avr/src/ff-xc8.asm` as the only source file.
+![MPLABX IDE](MPLAB_X_IDE.PNG)
+- Open project configuration options dialog box.
+![Project Configuration](MPLAB_X_IDE_Configuration.PNG)
+- Add compiler option for the include directory.
+![Project Configuration - Compiler](MPLAB_X_IDE_Configuration_Compiler.PNG)
+- Add linker option `-nostartfiles`.
+![Project Configuration - Compiler](MPLAB_X_IDE_Configuration_Linker.PNG)
+- Configure options according to your hardware and preferences in `avr/src/config-xc8.inc`. In my case I set `#define OPERATOR_UART 3` on line 18 indicating I want USB as the UART used for the operator.
+- Build the project `Production | Build Main Project`.
+- You should get the output similar to the following and the output `hex` file should be in the `dist/default/production/` subdirectory.
+```log
+make -f nbproject/Makefile-default.mk SUBPROJECTS= .build-conf
+make[1]: Entering directory 'D:/RE/Electronics/Arduino/Forth/flashforth/avr/src'
+make  -f nbproject/Makefile-default.mk dist/default/production/src.production.hex
+make[2]: Entering directory 'D:/RE/Electronics/Arduino/Forth/flashforth/avr/src'
+"C:\app\electro\Microchip\xc8\v2.32\bin\xc8-cc.exe" -c  -mcpu=ATmega32U4  -x assembler-with-cpp -D__ATmega32U4__   -mdfp="C:/app/electro/Microchip/MPLABX/v5.50/packs/Microchip/ATmega_DFP/2.3.126/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=default  -gdwarf-3 -Wa,--defsym=__MPLAB_BUILD=1 -I.   -MD -MP -MF "build/default/production/ff-xc8.o.d" -MT "build/default/production/ff-xc8.o.d" -MT build/default/production/ff-xc8.o -o build/default/production/ff-xc8.o  ff-xc8.asm 
+"C:\app\electro\Microchip\xc8\v2.32\bin\xc8-cc.exe"  -mcpu=ATmega32U4 -Wl,-Map=dist/default/production/src.production.map  -DXPRJ_default=default  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="C:/app/electro/Microchip/MPLABX/v5.50/packs/Microchip/ATmega_DFP/2.3.126/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -funsigned-char -funsigned-bitfields -Wall -gdwarf-3 -nostartfiles      -Wl,--memorysummary,dist/default/production/memoryfile.xml -o dist/default/production/src.production.elf  -o dist/default/production/src.production.elf  build/default/production/ff-xc8.o      -Wl,--start-group  -Wl,-lm -Wl,--end-group 
+Info: Loading file: c:\app\electro\microchip\xc8\v2.32\avr\avr\bin\../lib\ldscripts/avr5.xn
+"C:\app\electro\Microchip\xc8\v2.32\bin"\\avr-objcopy -O ihex "dist/default/production/src.production.elf" "dist/default/production/src.production.hex"
+make[2]: Leaving directory 'D:/RE/Electronics/Arduino/Forth/flashforth/avr/src'
+make[1]: Leaving directory 'D:/RE/Electronics/Arduino/Forth/flashforth/avr/src'
+
+BUILD SUCCESSFUL (total time: 1s)
+Loading code from D:/RE/Electronics/Arduino/Forth/flashforth/avr/src/dist/default/production/src.production.hex...
+Program loaded with pack,ATmega_DFP,2.3.126,Microchip
+Loading completed
+```
+- Upload the `hex` file to the ATMega32U4 board.
+```shell
+avrdude -u -c usbasp-clone -p m32u4 -U flash:w:"D:\RE\Electronics\Arduino\Forth\flashforth\avr\src\dist\default\production\src.production.hex":a -U lfuse:w:0xFF:m -U hfuse:w:0xDF:m -U efuse:w:0xCF:m
+```
+
 ### [NOT WORKING] Change the VID and PID and Compile Your Own Hex File
 - Download [FlashForth](https://flashforth.com/index.html) [here](http://www.sourceforge.net/projects/flashforth)
 - Unzip the ZIP archive `ff5.0.zip` into the project directory, e.g. `c:\avr\`
