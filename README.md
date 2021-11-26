@@ -35,7 +35,7 @@ marker  ok<#,ram>
 - Install [MPLABX](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide) and [XC8](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers).
 - Create a new project for ATMega32U4 in MPLABX and add `avr/src/ff-xc8.asm` as the only source file.
 ![MPLABX IDE](MPLAB_X_IDE.PNG)
-- Open project configuration options dialog box.
+- Open project configuration dialog box.
 ![Project Configuration](MPLAB_X_IDE_Configuration.PNG)
 - Add compiler option for the include directory.
 ![Project Configuration - Compiler](MPLAB_X_IDE_Configuration_Compiler.PNG)
